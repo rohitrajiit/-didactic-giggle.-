@@ -1,0 +1,33 @@
+import csv
+exampleFile = open('example.csv')
+exampleReader = csv.reader(exampleFile)
+exampleData = list(exampleReader)
+print(exampleData)
+print(exampleReader)
+exampleFile.close()
+exampleFile = open('example.csv')
+exampleReader = csv.reader(exampleFile)
+for row in exampleReader:
+  print('Row #' + str(exampleReader.line_num) + ' ' + str(row))
+ 
+exampleFile.close()
+outputFile = open('output.csv', 'w')
+outputWriter = csv.writer(outputFile)
+outputWriter.writerow(['spam', 'eggs', 'bacon', 'ham'])
+outputWriter.writerow(['Hello, world!', 'eggs', 'bacon', 'ham'])
+outputWriter.writerow([1, 2, 3.141592, 4])
+outputFile.close()
+
+csvFile = open('example.tsv', 'w')
+csvWriter = csv.writer(csvFile, delimiter='\t', lineterminator='\n\n')
+csvWriter.writerow(['apples', 'oranges', 'grapes'])
+csvWriter.writerow(['eggs', 'bacon', 'ham'])
+csvWriter.writerow(['spam', 'spam', 'spam', 'spam', 'spam', 'spam'])
+csvFile.close()
+
+stringOfJsonData = '{"name": "Zophie", "isCat": true, "miceCaught": 0,"felineIQ": null}'
+import json
+pythonValue = json.loads(stringOfJsonData)
+print(pythonValue)
+stringOfJsonData = json.dumps(pythonValue)
+print(stringOfJsonData)
